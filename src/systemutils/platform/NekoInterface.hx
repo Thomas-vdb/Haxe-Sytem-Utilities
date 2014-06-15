@@ -5,23 +5,21 @@ import systemutils.IO;
 
 class NekoInterface implements IO
 {
-	private var textMap : Map <String, IOTextObject>;
-
-	public function writeText (objectID : String)
+	public function new () {}
+	
+	public function writeText (objectID : String) : IOTextObject
 	{
-		createNekoTextObject (false);
+		return createNekoTextObject (false);
 	}
 
-	public function inputText (objectID : String) : String;
+	public function inputText (objectID : String) : IOTextObject
 	{
-		createNekoTextObject (true);
+		return createNekoTextObject (true);
 	}
 
 	private function createNekoTextObject (input : Bool) : IOTextObject
 	{
-		if (textMap == null) textMap = new Map <String, NekoTextObject> ();
-		textMap.set (objectID, new NekoTextObject (input));
- 		return textMap.get (objectID);
+ 		return new NekoTextObject (input);
 	}
 }
 
@@ -32,7 +30,7 @@ class NekoTextObject implements IOTextObject
 
 	public function new (?isInputText : Bool = false) { input = isInputText; }
 
-	public var text (get_text, set_text);
+	public var text (get_text, set_text) : String;
 
 	private function get_text () : String { return textStr; }
 	private function set_text (value : String) : String { return textStr = value; }

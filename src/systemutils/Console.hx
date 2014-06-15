@@ -7,9 +7,9 @@ class Console
 	private static var C : Map <String, Dynamic>;
 	private static var I : IO;
 
-	public static function Setup ( interface : IO )
+	public static function Setup ( io : IO )
 	{
-		I = interface;
+		I = io;
 	}
 
 	public static function Show ()
@@ -20,6 +20,13 @@ class Console
 	public static function Hide ()
 	{
 
+	}
+
+	public static function Log (str : String)
+	{
+		var log = I.writeText("systemutils.console.log");
+		log.text = str;
+		log.update();
 	}
 
 	public static function RegisterCommand (command : String, callback : Dynamic)
