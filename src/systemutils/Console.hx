@@ -24,9 +24,7 @@ class Console
 
 	public static function Log (str : String)
 	{
-		var log = I.writeText("systemutils.console.log");
-		log.text = str;
-		log.update();
+		var log = I.add("systemutils.console.log", IOType.LOG, str);
 	}
 
 	public static function RegisterCommand (command : String, callback : Dynamic)

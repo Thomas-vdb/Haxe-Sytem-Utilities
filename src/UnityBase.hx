@@ -1,13 +1,17 @@
 import systemutils.Console;
 
 import systemutils.IO;
-import systemutils.platform.NekoInterface;
 
-class Main
+import systemutils.platform.UnityInterface;
+
+import systemutils.interfaces.IDebug;
+
+
+class UnityBase
 {
 	public static function main () 
 	{
-		var io : IO = new NekoInterface ();
+		var io : IO = new UnityInterface ();
 
 		Console.Setup (io);
 		Console.Log ("Hello World");
